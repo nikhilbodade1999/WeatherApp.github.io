@@ -1,0 +1,69 @@
+
+<div class="search-city">
+    <form #from= "ngForm" (submit)="onSubmit()">
+      <input type="text" placeholder="Search City" name="City" 
+       [(ngModel)]="cityname" >
+    </form>
+</div>   
+  
+  
+   <div class="container" *ngIf="myWeather"> 
+      <div class="Upper-Data">
+          <img src="../assets/Images/photo.jpg" *ngIf="myWeather.main.temp">
+          <!-- <img src="../assets/Images/Cold.jpg" *ngIf="myWeather.main.temp < 25"> -->
+          <div class="weather-data">
+              <div class="location">{{myWeather.name}}</div>
+              <div class="temperature">{{ ((myWeather.main.temp-32)*5)/9 | number: '1.0-0'}}°C</div>
+            </div>
+      </div>
+      <div class="Lower-Data">
+          <div class="info">
+              More Information
+          </div>
+          <div class="info-container">
+              <div class="info-block">
+                  <div class="info-label">
+                      <img src="../assets/Images/temp-cold.png">
+                      <span>min</span>
+                  </div>
+                  <div class="info-vlaue">
+                      {{((myWeather.main.temp_min-32)*5)/12 | number: '1.0-0'}}°C
+                  </div>
+              </div>
+      
+              <div class="info-block">
+                  <div class="info-label">
+                      <img src="../assets/Images/temp-hot.png">
+                      <span>max</span>
+                  </div>
+                  <div class="info-vlaue">
+                      {{((myWeather.main.temp_max-32)*5)/8 | number: '1.0-0'}}°C
+                  </div>
+              </div>
+      
+              <div class="info-block">
+                  <div class="info-label">
+                      <img src="../assets/Images/humidity.png">
+                      <span>humidity</span>
+                  </div>
+                  <div class="info-vlaue">
+                      {{myWeather.main.humidity}}%
+                  </div>
+              </div>
+      
+              <div class="info-block">
+                  <div class="info-label">
+                      <img src="../assets/Images/wind.png">
+                      <span>min</span>
+                  </div>
+                  <div class="info-vlaue">
+                      {{myWeather.wind.speed}} km/h  
+                 </div>
+              </div>
+      
+          </div>
+      </div> 
+  
+
+ 
+<router-outlet></router-outlet>
